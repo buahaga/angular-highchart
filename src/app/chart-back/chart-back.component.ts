@@ -12,9 +12,11 @@ export class ChartBackComponent implements OnInit {
 
   ngOnInit() { }
 
-  data = [0, 0, 800, 400, 300, 205]; // change func to transform all < 100 to -coords
-  time = ['Jul 17', 'Aug 17', 'Sept 17', 'Oct 17', 'Nov 17', 'Dec 17'];
-  steps = [100, 200, 300];
+  private data = [0, 0, 800, 400, 300, 205]; // maybe change func to transform all < 100 to -coords
+  private time = ['Jul 17', 'Aug 17', 'Sept 17', 'Oct 17', 'Nov 17', 'Dec 17'];
+  private steps = [100, 200, 300];
+
+  public lineUnderChart: string = this.time.slice(-1).join().toUpperCase();
 
   chart = new Chart(<any>{
     chart: {
@@ -22,13 +24,14 @@ export class ChartBackComponent implements OnInit {
         backgroundColor: '#e6e6e6',
     },
     title: {
-        text: this.data.slice(-1)
+        text: this.data.slice(-1),
+        style: {
+            fontSize: '40px',
+            fontWeight: 'bold'
+        }
     },
     xAxis: {
         categories: this.time,
-        title: {
-          text: this.time.slice(-1).join().toUpperCase()
-        },
         tickLength: 0,
         lineWidth: 0,
         minorGridLineWidth: 0,
@@ -40,11 +43,10 @@ export class ChartBackComponent implements OnInit {
       gridLineDashStyle: 'Dot',
       gridLineColor: '#b3b3b3',
       categories: this.steps,
-      pointStart: 100,
       labels: {
         step: this.steps.length - 2,
       },
-      tickInterval: 1460,
+      tickInterval: 1660,
       min: -1,
       max: 1660,
       title: false

@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  wasClicked = false;
+  private wasClicked = false;
+  private text: string = 'Evolution index';
 
   onClick() {
       this.wasClicked= !this.wasClicked;
+      this.text === 'Evolution index' ? this.text = 'Target Attainment' : this.text = 'Evolution index';
   }
 }

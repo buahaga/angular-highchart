@@ -9,24 +9,17 @@ import { Chart } from 'angular-highcharts';
 
 export class ChartComponent {
 
-  constructor(
-    // private previous: number,
-    // private current: number,
-    // private month: string,
-    // private currency: string
-    ) { }
+  constructor() { }
 
     private previous = 115;
     private current = 190;
     private month = 'Dec 17';
     private currency = 'USD';
 
+    public  lineUnderChart: string = `${this.month} in ${this.currency}`;
+
     getPercent() {
       return ((this.current / this.previous) * 100).toFixed(1) + '%';
-    }
-
-    getDataAndCurrency() {
-      return `${this.month} in ${this.currency}`
     }
 
   ngOnInit() { }
@@ -37,7 +30,11 @@ export class ChartComponent {
         backgroundColor: '#e6e6e6',
       },
       title: {
-        text: this.getPercent()
+        text: this.getPercent(),
+        style: {
+            fontSize: '40px',
+            fontWeight: 'bold'
+        }
       },
       subtitle: {
         text: ''
@@ -46,9 +43,7 @@ export class ChartComponent {
         visible: false
       },
       yAxis: {
-        title: {
-          text: this.getDataAndCurrency()
-        },
+        title: false,
         min: 0,
         max: 200,
         tickInterval: 100,
@@ -68,7 +63,7 @@ export class ChartComponent {
       series: [{
         name: 'previous',
         data: [this.previous],
-        pointWidth: 90,
+        pointWidth: 120,
         borderWidht: 5,
         borderRadius: 5,
         color: '#ffccff',

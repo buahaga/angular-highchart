@@ -1,10 +1,9 @@
 <div class="panel" [class.selected]="wasClicked">
 
-  <app-chart-back class='cards' ></app-chart-back>
+  <app-chart-back class='front card' ></app-chart-back>
 
-  <app-chart class='cards' ></app-chart>
+  <app-chart class='back card' ></app-chart>
 
-  <!-- <button class="invert-btn" (click)="onClick()">&#8635; Evolution index</button> -->
+  <app-chart-btn class="invert-btn" [text] = "text" (click)="onClick()"></app-chart-btn>
+
 </div>
-<!-- class="front card"
-class="back card" -->

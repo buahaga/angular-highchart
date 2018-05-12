@@ -5,12 +5,16 @@ import { ChartModule } from 'angular-highcharts';
 import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
 import { ChartBackComponent } from './chart-back/chart-back.component';
+import { ChartBtnComponent } from './chart-btn/chart-btn.component';
+import { ChartLabelComponent } from './chart-label/chart-label.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChartComponent,
-    ChartBackComponent
+    ChartBackComponent,
+    ChartBtnComponent,
+    ChartLabelComponent
   ],
   imports: [
     BrowserModule,
