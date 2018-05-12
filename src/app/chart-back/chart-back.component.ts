@@ -12,13 +12,14 @@ export class ChartBackComponent implements OnInit {
 
   ngOnInit() { }
 
-  data = [-89, 0, 800, 400, 300, 205];
+  data = [0, 0, 800, 400, 300, 205]; // change func to transform all < 100 to -coords
   time = ['Jul 17', 'Aug 17', 'Sept 17', 'Oct 17', 'Nov 17', 'Dec 17'];
   steps = [100, 200, 300];
 
   chart = new Chart(<any>{
     chart: {
-        type: 'column'
+        type: 'column',
+        backgroundColor: '#e6e6e6',
     },
     title: {
         text: this.data.slice(-1)
@@ -37,6 +38,7 @@ export class ChartBackComponent implements OnInit {
     },
     yAxis: {
       gridLineDashStyle: 'Dot',
+      gridLineColor: '#b3b3b3',
       categories: this.steps,
       pointStart: 100,
       labels: {
@@ -47,11 +49,16 @@ export class ChartBackComponent implements OnInit {
       max: 1660,
       title: false
     },
-    // plotOptions: {
-    //     series: {
-    //         pointStart: 100
-    //     }
-    // },
+    plotOptions: {
+        column: {
+            grouping: false,
+            shadow: false,
+            borderWidth: 0
+        },
+        // series: {
+        //     pointStart: 100
+        // }
+    },
     credits: {
         enabled: false
     },
@@ -61,8 +68,6 @@ export class ChartBackComponent implements OnInit {
         showInLegend: false,
         data: this.data,
         pointWidth: 30,
-        borderWidht: 5,
-        borderRadius: 5,
         color: '#9900cc',
     }]
   });

@@ -16,10 +16,10 @@ export class ChartComponent {
     // private currency: string
     ) { }
 
-    previous = 150;
-    current = 190;
-    month = 'Dec 17';
-    currency = 'USD';
+    private previous = 115;
+    private current = 190;
+    private month = 'Dec 17';
+    private currency = 'USD';
 
     getPercent() {
       return ((this.current / this.previous) * 100).toFixed(1) + '%';
@@ -33,7 +33,8 @@ export class ChartComponent {
 
   chart = new Chart(<any>{
     chart: {
-        type: 'bar'
+        type: 'bar',
+        backgroundColor: '#e6e6e6',
       },
       title: {
         text: this.getPercent()
@@ -42,16 +43,16 @@ export class ChartComponent {
         text: ''
       },
       xAxis: {
-        visible: false;
+        visible: false
       },
       yAxis: {
         title: {
           text: this.getDataAndCurrency()
-        }
+        },
         min: 0,
         max: 200,
         tickInterval: 100,
-        gridLineDashStyle: 'Dot',
+        gridLineColor: '#e6e6e6',
       },
       plotOptions: {
           bar: {
@@ -75,7 +76,7 @@ export class ChartComponent {
       {
         name: 'current',
         data: [this.current],
-        pointWidth: 30,
+        pointWidth: 60,
         borderWidht: 5,
         borderRadius: 5,
         color: '#9900cc'
