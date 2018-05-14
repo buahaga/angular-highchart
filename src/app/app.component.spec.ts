@@ -1,35 +1,44 @@
-import { TestBed, async } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { TargetAttainmentChart } from './target-attainment-chart/target-attainment-chart.component';
-import { EvolutionIndexChart } from './evolution-index-chart/evolution-index-chart.component';
-import { ChartBtnComponent } from './chart-btn/chart-btn.component';
-import { ChartLabelComponent } from './chart-label/chart-label.component';
+
 describe('AppComponent', () => {
+  
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        TargetAttainmentChart,
-        EvolutionIndexChart,
-        ChartBtnComponent,
-        ChartLabelComponent
       ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.debugElement.componentInstance;;
+  });
+
+  it('#onClick() should toggle #text', () => {
+    expect(component.text).toBe('Evolution index', 'at first');
+    component.onClick();
+    expect(component.text).toBe('Target Attainment', 'after first click');
+    component.onClick();
+    expect(component.text).toBe('Evolution index', 'after second click');
+  });
+
+  it('#onClick() should toggle #wasClicked', () => {
+    expect(component.wasClicked).toBe(false, 'at first');
+    component.onClick();
+    expect(component.wasClicked).toBe(true, 'after first click');
+    component.onClick();
+    expect(component.wasClicked).toBe(false, 'after second click');
+  });
+
   it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeDefined();
   }));
-  // it(`should have as title 'app'`, async(() => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   const app = fixture.debugElement.componentInstance;
-  //   expect(app.title).toEqual('app');
-  // }));
-  // it('should render title in a h1 tag', async(() => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.debugElement.nativeElement;
-  //   expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
-  // }));
+
 });

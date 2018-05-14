@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  private wasClicked = false;
-  private text: string = 'Evolution index';
+  public wasClicked = false;
+  public text: string = 'Evolution index';
 
   onClick() {
       this.wasClicked= !this.wasClicked;

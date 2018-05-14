@@ -11,9 +11,9 @@ export class TargetAttainmentChart {
 
   constructor() { }
 
-  private chart: Chart;
-  private previous = MOCK_DATA[MOCK_DATA.length -1].planned;
-  private current = MOCK_DATA[MOCK_DATA.length -1].profit;
+  chart: Chart;
+  public previous = MOCK_DATA[MOCK_DATA.length -1].planned;
+  public current = MOCK_DATA[MOCK_DATA.length -1].profit;
   private month = MOCK_DATA[MOCK_DATA.length -1].month;
   private currency = MOCK_DATA[MOCK_DATA.length -1].currency;
   private lineUnderChart: string = `${this.month} in ${this.currency}`;
@@ -32,7 +32,7 @@ export class TargetAttainmentChart {
 
   ngOnInit() {
     this.chart = new Chart(<any>{
-      chart: {
+        chart: {
           type: 'bar',
           backgroundColor: '#f2f2f2',
         },

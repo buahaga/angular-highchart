@@ -11,10 +11,10 @@ export class EvolutionIndexChart implements OnInit {
 
   constructor() { }
 
-  private chart: Chart;
-  private profit: number[] = MOCK_DATA.map(el => el.profit);
-  private planned: number[] = MOCK_DATA.map(el=> el.planned);
-  private month: string[] = MOCK_DATA.map(el => el.month);
+  public chart: Chart;
+  public profit: number[] = MOCK_DATA.map(el => el.profit);
+  public planned: number[] = MOCK_DATA.map(el=> el.planned);
+  public month: string[] = MOCK_DATA.map(el => el.month);
   private start: number[] = [100];
   private lineUnderChart: string = this.month.slice(-1).join().toUpperCase();
 
@@ -48,9 +48,6 @@ export class EvolutionIndexChart implements OnInit {
         gridLineDashStyle: 'Dot',
         gridLineColor: '#b3b3b3',
         categories: this.start,
-        labels: {
-          step: this.start.length - 2,
-        },
         tickInterval: this.getMax(),
         min: -1,
         max: this.getMax(),
