@@ -12,6 +12,6 @@ export class AppComponent {
 
   onClick() {
       this.wasClicked= !this.wasClicked;
-      this.text === 'Evolution index' ? this.text = 'Target Attainment' : this.text = 'Evolution index';
+      this.text = this.text === 'Evolution index' ? 'Target Attainment' : 'Evolution index';
   }
 }

@@ -3,16 +3,16 @@ import { NgModule } from '@angular/core';
 import { ChartModule } from 'angular-highcharts';
 
 import { AppComponent } from './app.component';
-import { ChartComponent } from './chart/chart.component';
-import { ChartBackComponent } from './chart-back/chart-back.component';
+import { TargetAttainmentChart } from './target-attainment-chart/target-attainment-chart.component';
+import { EvolutionIndexChart } from './evolution-index-chart/evolution-index-chart.component';
 import { ChartBtnComponent } from './chart-btn/chart-btn.component';
 import { ChartLabelComponent } from './chart-label/chart-label.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChartComponent,
-    ChartBackComponent,
+    TargetAttainmentChart,
+    EvolutionIndexChart,
     ChartBtnComponent,
     ChartLabelComponent
   ],

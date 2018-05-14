@@ -8,10 +8,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ChartLabelComponent implements OnInit {
 
   @Input() text;
+
   constructor() { }
 
   ngOnInit() {
-
   }
 
 }
