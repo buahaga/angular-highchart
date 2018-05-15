@@ -11,33 +11,31 @@ export class TargetAttainmentChart {
 
   constructor() { }
 
-  chart: Chart;
-  public previous = MOCK_DATA[MOCK_DATA.length -1].planned;
-  public current = MOCK_DATA[MOCK_DATA.length -1].profit;
-  private month = MOCK_DATA[MOCK_DATA.length -1].month;
-  private currency = MOCK_DATA[MOCK_DATA.length -1].currency;
-  private lineUnderChart: string = `${this.month} in ${this.currency}`;
+  @Input() current;
+  @Input() previous;
+  @Input() month;
+  @Input() currency;
 
-  getPercent() {
-    return ((this.current / this.previous) * 100).toFixed(1);
-  }
+  public chart: Chart;
+  public chartLabel: string;
 
-  getPreviousPercent() {
-    return ((this.previous / this.current) * 100).toFixed(1);
+  getPercent(a, b) {
+    return (a / b * 100);
   }
 
   getMax() {
-    return ( Math.round((((this.previous / this.current) * 100) / 100) * 100) + 100 );
+    return Math.round(this.previous / this.current * 100) + 100 ;
   }
 
   ngOnInit() {
+    this.chartLabel = `${this.month} in ${this.currency}`;
     this.chart = new Chart(<any>{
         chart: {
           type: 'bar',
           backgroundColor: '#f2f2f2',
         },
         title: {
-          text: this.getPercent() + '%',
+          text: this.getPercent(this.current, this.previous).toFixed(1) + '%',
           style: {
               fontSize: '40px',
               fontWeight: 'bold'
@@ -69,7 +67,7 @@ export class TargetAttainmentChart {
         tooltip: false,
         series: [{
           name: 'previous',
-          data: [+this.getPreviousPercent()],
+          data: [this.getPercent(this.previous, this.current)],
           pointWidth: 120,
           borderWidht: 5,
           borderRadius: 5,
@@ -77,7 +75,7 @@ export class TargetAttainmentChart {
         },
         {
           name: 'current',
-          data: [+this.getPercent()],
+          data: [this.getPercent(this.current, this.previous)],
           pointWidth: 60,
           borderWidht: 5,
           borderRadius: 5,

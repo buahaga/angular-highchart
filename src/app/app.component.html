@@ -1,9 +1,9 @@
-<div class="panel" [class.selected]="wasClicked">
+<div class="panel" [class.selected]="btnToggle">
 
-  <app-evolution-index-chart class='front card'></app-evolution-index-chart>
+  <app-evolution-index-chart class="front card" [profit]="profit" [planned]="planned" [month]="month"></app-evolution-index-chart>
 
-  <app-target-attainment-chart class='back card'></app-target-attainment-chart>
+  <app-target-attainment-chart class="back card" [current]="profit[profit.length-1]" [previous]="planned[planned.length-1]" [month]="month[month.length-1]" [currency]="currency"></app-target-attainment-chart>
 
-  <app-chart-btn class="invert-btn" [text] = "text" (click)="onClick()"></app-chart-btn>
+  <app-chart-btn class="invert-btn" [text]="text" (click)="onClick()"></app-chart-btn>
 
 </div>

@@ -39,14 +39,15 @@ describe('TargetAttainmentChart', () => {
     expect(cur).toEqual(expected);
   }));
 
-  // it('should set right max to yAxis', async(() => {
-  //   const expected = 150;
-  //   const max = component.chart.options.yAxis.max;
-  //   expect(max).toEqual(expected);
-  // }));
+  it('should set right max to yAxis', async(() => {
+    const expected = 150;
+    const yAxis = component.chart.options.yAxis as Highcharts.AxisOptions;
+    const max = yAxis.max;
+    expect(max).toEqual(expected);
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
+  
 });

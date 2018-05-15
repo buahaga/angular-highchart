@@ -29,12 +29,12 @@ describe('AppComponent', () => {
     expect(component.text).toBe('Evolution index', 'after second click');
   });
 
-  it('#onClick() should toggle #wasClicked', () => {
-    expect(component.wasClicked).toBe(false, 'at first');
+  it('#onClick() should toggle #btnToggle', () => {
+    expect(component.btnToggle).toBe(false, 'at first');
     component.onClick();
-    expect(component.wasClicked).toBe(true, 'after first click');
+    expect(component.btnToggle).toBe(true, 'after first click');
     component.onClick();
-    expect(component.wasClicked).toBe(false, 'after second click');
+    expect(component.btnToggle).toBe(false, 'after second click');
   });
 
   it('should create the app', async(() => {

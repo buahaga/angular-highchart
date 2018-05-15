@@ -22,8 +22,8 @@ describe('EvolutionIndexChart', () => {
   }));
 
   it('should generate right title in chart', async(() => {
-    const expected = 100;
-    const title = +component.chart.options.title.text;
+    const expected: string = '100';
+    const title = component.chart.options.title.text;
     expect(title).toEqual(expected);
   }));
 

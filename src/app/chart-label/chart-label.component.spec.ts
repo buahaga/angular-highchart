@@ -10,14 +10,20 @@ describe('ChartLabelComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ChartLabelComponent ]
     })
-    .compileComponents();
+    .compileComponents()
+    .then(() => {
+        fixture = TestBed.createComponent(ChartLabelComponent);
+        component = fixture.componentInstance;
+        component.text = 'hello';
+        fixture.detectChanges();
+      });
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ChartLabelComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  it('should display right text in component', async(() => {
+    const expected: string = 'hello';
+    const text = component.text;
+    expect(text).toEqual(expected);
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

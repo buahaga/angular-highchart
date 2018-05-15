@@ -10,14 +10,20 @@ describe('ChartBtnComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ChartBtnComponent ]
     })
-    .compileComponents();
+    .compileComponents()
+    .then(() => {
+        fixture = TestBed.createComponent(ChartBtnComponent);
+        component = fixture.componentInstance;
+        component.text = 'btn';
+        fixture.detectChanges();
+      });
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ChartBtnComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  it('should display right text in btn', async(() => {
+    const expected: string = 'btn';
+    const text = component.text;
+    expect(text).toEqual(expected);
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

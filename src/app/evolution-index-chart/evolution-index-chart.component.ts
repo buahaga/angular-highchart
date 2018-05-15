@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Chart } from 'angular-highcharts';
-import { MOCK_DATA } from '../mock-data';
 
 @Component({
   selector: 'app-evolution-index-chart',
@@ -11,18 +10,20 @@ export class EvolutionIndexChart implements OnInit {
 
   constructor() { }
 
+  @Input() profit;
+  @Input() planned;
+  @Input() month;
+
   public chart: Chart;
-  public profit: number[] = MOCK_DATA.map(el => el.profit);
-  public planned: number[] = MOCK_DATA.map(el=> el.planned);
-  public month: string[] = MOCK_DATA.map(el => el.month);
-  private start: number[] = [100];
-  private lineUnderChart: string = this.month.slice(-1).join().toUpperCase();
+  public start: number[] = [100];
+  public chartLabel: string;
 
   getMax() {
-    return this.profit.reduce((a, b) => (a > b ? a : b));
+    return Math.max.apply(null, this.profit);
   }
 
   ngOnInit() {
+    this.chartLabel = this.month.slice(-1).join();
     this.chart = new Chart(<any>{
       chart: {
           type: 'column',
