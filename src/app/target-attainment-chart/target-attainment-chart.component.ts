@@ -7,20 +7,19 @@ import { MOCK_DATA } from '../mock-data';
   templateUrl: './target-attainment-chart.component.html',
   styleUrls: ['./target-attainment-chart.component.css'],
 })
-export class TargetAttainmentChart {
+export class TargetAttainmentChart implements OnInit {
 
   constructor() { }
 
-  @Input() current;
-  @Input() previous;
-  @Input() month;
-  @Input() currency;
+  @Input() current: number;
+  @Input() previous: number;
+  @Input() month: string;
 
   public chart: Chart;
   public chartLabel: string;
 
-  getPercent(a, b) {
-    return (a / b * 100);
+  getPercent(n: number, m: number): number {
+    return n / m * 100;
   }
 
   getMax() {
@@ -28,7 +27,7 @@ export class TargetAttainmentChart {
   }
 
   ngOnInit() {
-    this.chartLabel = `${this.month} in ${this.currency}`;
+    this.chartLabel = `${this.month} in USD`;
     this.chart = new Chart(<any>{
         chart: {
           type: 'bar',
@@ -38,14 +37,14 @@ export class TargetAttainmentChart {
           text: this.getPercent(this.current, this.previous).toFixed(1) + '%',
           style: {
               fontSize: '40px',
-              fontWeight: 'bold'
+              fontWeight: 'bold',
           }
         },
         subtitle: {
-          text: ''
+          text: '',
         },
         xAxis: {
-          visible: false
+          visible: false,
         },
         yAxis: {
           title: false,
@@ -58,11 +57,11 @@ export class TargetAttainmentChart {
             bar: {
                 grouping: false,
                 shadow: false,
-                borderWidth: 0
+                borderWidth: 0,
             }
         },
         credits: {
-            enabled: false
+            enabled: false,
         },
         tooltip: false,
         series: [{
@@ -79,7 +78,7 @@ export class TargetAttainmentChart {
           pointWidth: 60,
           borderWidht: 5,
           borderRadius: 5,
-          color: '#9900cc'
+          color: '#9900cc',
         }]
       });
   }

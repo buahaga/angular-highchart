@@ -7,7 +7,7 @@ import { Component, OnInit, Input} from '@angular/core';
 })
 export class ChartBtnComponent implements OnInit {
 
-  @Input() text;
+  @Input() text: string;
 
   constructor() { }
 

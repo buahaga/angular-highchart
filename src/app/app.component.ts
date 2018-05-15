@@ -11,13 +11,12 @@ export class AppComponent {
   public profit: number[] = MOCK_DATA.map(el => el.profit);
   public planned: number[] = MOCK_DATA.map(el=> el.planned);
   public month: string[] = MOCK_DATA.map(el => el.month);
-  public currency: string = MOCK_DATA[MOCK_DATA.length -1].currency;
 
   public btnToggle = false;
   public text: string = 'Evolution index';
 
   onClick() {
       this.btnToggle= !this.btnToggle;
-      this.text = this.text === 'Evolution index' ? 'Target Attainment' : 'Evolution index';
+      this.text = this.btnToggle ? 'Target Attainment' : 'Evolution index';
   }
 }

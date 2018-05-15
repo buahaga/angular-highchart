@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChartLabelComponent implements OnInit {
 
-  @Input() text;
+  @Input() text: string;
 
   constructor() { }
 

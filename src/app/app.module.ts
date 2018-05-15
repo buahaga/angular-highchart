@@ -14,13 +14,13 @@ import { ChartLabelComponent } from './chart-label/chart-label.component';
     TargetAttainmentChart,
     EvolutionIndexChart,
     ChartBtnComponent,
-    ChartLabelComponent
+    ChartLabelComponent,
   ],
   imports: [
     BrowserModule,
-    ChartModule
+    ChartModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

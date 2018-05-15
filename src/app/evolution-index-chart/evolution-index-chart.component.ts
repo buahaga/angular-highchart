@@ -4,36 +4,36 @@ import { Chart } from 'angular-highcharts';
 @Component({
   selector: 'app-evolution-index-chart',
   templateUrl: './evolution-index-chart.component.html',
-  styleUrls: ['./evolution-index-chart.component.css']
+  styleUrls: ['./evolution-index-chart.component.css'],
 })
 export class EvolutionIndexChart implements OnInit {
 
   constructor() { }
 
-  @Input() profit;
-  @Input() planned;
-  @Input() month;
+  @Input() profit: number[];
+  @Input() planned: number[];
+  @Input() month: string[];
 
   public chart: Chart;
   public start: number[] = [100];
   public chartLabel: string;
 
-  getMax() {
+  get maxY(): number {
     return Math.max.apply(null, this.profit);
   }
 
   ngOnInit() {
-    this.chartLabel = this.month.slice(-1).join();
+    this.chartLabel = this.month[this.month.length-1];
     this.chart = new Chart(<any>{
       chart: {
           type: 'column',
           backgroundColor: '#f2f2f2',
       },
       title: {
-          text: this.profit.slice(-1),
+          text: this.profit[this.profit.length-1],
           style: {
               fontSize: '40px',
-              fontWeight: 'bold'
+              fontWeight: 'bold',
           }
       },
       xAxis: {
@@ -43,22 +43,22 @@ export class EvolutionIndexChart implements OnInit {
           minorGridLineWidth: 0,
           labels: {
             step: this.month.length - 1,
-          }
+          },
       },
       yAxis: {
         gridLineDashStyle: 'Dot',
         gridLineColor: '#b3b3b3',
         categories: this.start,
-        tickInterval: this.getMax(),
+        tickInterval: this.maxY,
         min: -1,
-        max: this.getMax(),
-        title: false
+        max: this.maxY,
+        title: false,
       },
       plotOptions: {
           column: {
               grouping: false,
               shadow: false,
-              borderWidth: 0
+              borderWidth: 0,
           },
       },
       credits: {
